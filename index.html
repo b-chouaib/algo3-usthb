@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ALGO3 · Algorithmics and Data Structures</title>
+<meta name="description" content="ALGO3, 2nd year ISIL, USTHB: course chapters, tutorial series and solutions.">
+<link rel="icon" href="assets/logo.png">
+<style>
+:root{--blue:#3452B5;--navy:#17244F;--ink:#26304A;--muted:#6B7591;--line:#DCE2F0;--tint:#EEF2FC;--bg:#fff;--card:#fff;--green:#1F8A5B;--amber:#B8701A;--lockbg:#F5F6FA}
+@media (prefers-color-scheme: dark){:root{--bg:#0F1530;--card:#161D3D;--ink:#DCE2F5;--navy:#F2F5FF;--muted:#9AA5C8;--line:#27315A;--tint:#1D2650;--blue:#8FA6F5;--lockbg:#121936;--green:#4CC38A;--amber:#E8A24A}}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+header.hero{background:#3452B5;color:#fff;position:relative;overflow:hidden}
+@media (prefers-color-scheme: dark){header.hero{background:#2B3F8F}}
+header.hero::after{content:"";position:absolute;right:-140px;top:-160px;width:460px;height:460px;border-radius:50%;border:2px solid rgba(255,255,255,.18)}
+.hero .wrap{padding-top:30px;padding-bottom:42px;position:relative;z-index:1}
+.top{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.uni{font-size:13px;letter-spacing:.06em;opacity:.85;line-height:1.4}
+.top img{height:62px;background:#fff;border-radius:12px;padding:6px}
+.hero h1{font-size:clamp(34px,6vw,58px);font-weight:800;letter-spacing:-.03em;line-height:1.05;margin-top:34px}
+.hero p.sub{font-size:clamp(15px,2.4vw,19px);opacity:.9;margin-top:10px}
+.hero .by{margin-top:20px;font-size:13px;opacity:.85}.hero .by b{display:block;font-size:17px;font-weight:700;margin-top:2px}
+main{padding:30px 0 16px}
+.legend{display:flex;gap:18px;flex-wrap:wrap;font-size:13px;color:var(--muted);margin-bottom:16px;align-items:center}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+h2{font-size:13px;font-weight:750;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-bottom:12px}
+.ch{background:var(--card);border:1.5px solid var(--line);border-radius:16px;padding:16px 18px;margin-bottom:14px}
+.chh{display:flex;gap:16px;align-items:center;margin-bottom:12px}
+.num{font-size:34px;font-weight:800;color:var(--blue);letter-spacing:-.03em;min-width:54px;text-align:center}
+.chh h3{font-size:18px;color:var(--navy);font-weight:700}.chh p{font-size:14px;color:var(--muted)}
+.slots{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.slot{border:1.5px solid var(--line);border-radius:12px;padding:11px 13px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.slot .t{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.slot .lab{font-weight:700;font-size:14.5px;color:var(--navy)}
+.slot .meta{font-size:12px;color:var(--muted)}
+.slot.locked{background:var(--lockbg);border-style:dashed}
+.slot.locked .lab{color:var(--muted)}
+.state{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:650;color:var(--muted)}
+.slot.open{border-color:#9DAEE0}
+.slot.open .state{color:var(--green)}
+.acts{display:flex;gap:7px}
+.b{flex:1;font:inherit;font-size:13px;font-weight:650;border-radius:9px;padding:7px 10px;border:1.5px solid var(--blue);background:var(--blue);color:#fff;cursor:pointer;text-align:center}
+.b.sec{background:transparent;color:var(--blue);flex:0 0 auto}
+.b:hover{filter:brightness(1.12)}
+.b[disabled]{opacity:.6;cursor:wait}
+.slot.locked .ghost{font-size:12.5px;color:var(--muted);padding:7px 0}
+.note{margin:18px 0 6px;background:var(--tint);border-left:4px solid var(--blue);border-radius:10px;padding:12px 16px;font-size:14px}
+#toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:#17244F;color:#fff;padding:10px 16px;border-radius:10px;font-size:14px;display:none;max-width:90%;z-index:9}
+footer{border-top:1px solid var(--line);margin-top:22px;padding:18px 0 32px;font-size:12.5px;color:var(--muted);text-align:center}
+svg.i{width:14px;height:14px;flex:none}
+@media (max-width:780px){.slots{grid-template-columns:1fr}.num{font-size:26px;min-width:40px}.top img{height:48px}}
+</style></head>
+<body>
+<header class="hero"><div class="wrap">
+ <div class="top"><div class="uni">University of Science and Technology<br>Houari Boumediene · Faculty of Computer Science</div><img src="assets/logo.png" alt="USTHB"></div>
+ <h1>ALGO3</h1>
+ <p class="sub">Algorithmics and Data Structures · 2nd year ISIL</p>
+ <div class="by">Lecturer<b>Dr. BOURAHLA Chouaib</b></div>
+</div></header>
+<main><div class="wrap">
+ <h2>Chapters and tutorials</h2>
+ <div class="legend">
+  <span><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Locked: not available yet</span>
+  <span style="color:var(--green)"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 7.5-2"/></svg>Unlocked: open or download</span>
+ </div>
+ <div id="list"></div>
+ <div class="note">Documents are unlocked progressively during the semester. Open them in your browser or download them. Course slides are landscape; exercise sheets and solutions are A4 (ready to print).</div>
+</div></main>
+<footer><div class="wrap">ALGO3 · Algorithmics and Data Structures · USTHB</div></footer>
+<div id="toast"></div>
+<script>
+const ITEMS = [{"id": "course-1", "ch": 1, "kind": "course", "label": "Course", "file": "pdf/course-1.enc", "name": "ALGO3 - Chapter 1 - Algorithmics Basics Reminder.pdf", "pages": 31, "size": 0.9, "check": "BBAY3aIA1XEpFW10p62H+kEVe2as23noQ67tqxOD"}, {"id": "td-1", "ch": 1, "kind": "td", "label": "Exercises", "file": "pdf/td-1.enc", "name": "TD1 - The Basics of Algorithmic.pdf", "pages": 2, "size": 0.2, "check": "9DUa+TCM7zzOoO6/QOxRk++4qfX5vflRhUesZ/9l"}, {"id": "sol-1", "ch": 1, "kind": "sol", "label": "Solution", "file": "pdf/sol-1.enc", "name": "TD1 - solution.pdf", "pages": 6, "size": 0.4, "check": "8WsrvhamsBVhs8J2utWsO2MNihxptcYc2E1YWQmJ"}, {"id": "course-2", "ch": 2, "kind": "course", "label": "Course", "file": "pdf/course-2.enc", "name": "ALGO3 - Chapter 2 - Data Representation in Memory.pdf", "pages": 12, "size": 0.6, "check": "j2ZELlFcq2fMh+LJqiWdGdUX+aUzZwj99rzokH2k"}, {"id": "td-2", "ch": 2, "kind": "td", "label": "Exercises", "file": "pdf/td-2.enc", "name": "TD2 - Dynamic Memory Allocation.pdf", "pages": 1, "size": 0.2, "check": "RKXl0Gq2EaEip8utEm6a21QRZ0lSCPYzEa1M+SyA"}, {"id": "sol-2", "ch": 2, "kind": "sol", "label": "Solution", "file": "pdf/sol-2.enc", "name": "TD2 - solution.pdf", "pages": 4, "size": 0.3, "check": "Ru+YfO9+7NgRprXA9ZfQ93ORr957u9LwQS4QS4n8"}, {"id": "course-3", "ch": 3, "kind": "course", "label": "Course", "file": "pdf/course-3.enc", "name": "ALGO3 - Chapter 3 - Introduction to Algorithm Analysis.pdf", "pages": 19, "size": 0.7, "check": "oda/F189av1LjLetltRmWBTAUCxtidZLp/gIIpHs"}, {"id": "td-3", "ch": 3, "kind": "td", "label": "Exercises", "file": "pdf/td-3.enc", "name": "TD3 - Algorithm Analysis.pdf", "pages": 1, "size": 0.2, "check": "W0JGiBG31fz1Q+xgqq6pFTPwyqLJKSbFaBTTDNgc"}, {"id": "sol-3", "ch": 3, "kind": "sol", "label": "Solution", "file": "pdf/sol-3.enc", "name": "TD3 - solution.pdf", "pages": 5, "size": 0.4, "check": "jkSoNOZ+6xyDMYNsKZlJd0mFk/jkqeHvG/xw7eCs"}, {"id": "course-4", "ch": 4, "kind": "course", "label": "Course", "file": "pdf/course-4.enc", "name": "ALGO3 - Chapter 4 - Stacks.pdf", "pages": 15, "size": 0.7, "check": "U/VwFyaO1PJ1AW13FW8U/KFrNqnZlFHNPVKdwgPA"}, {"id": "td-4", "ch": 4, "kind": "td", "label": "Exercises", "file": "pdf/td-4.enc", "name": "TD4 - The Stacks.pdf", "pages": 1, "size": 0.2, "check": "SpuiBLJ7YtqD11rKMixVKskB3SEAk6tLgyDlwE3M"}, {"id": "sol-4", "ch": 4, "kind": "sol", "label": "Solution", "file": "pdf/sol-4.enc", "name": "TD4 - solution.pdf", "pages": 6, "size": 0.4, "check": "uTyX3HQxvvUS7RnWktHpdB26VSJaGx4QHd5ocJmj"}, {"id": "course-5", "ch": 5, "kind": "course", "label": "Course", "file": "pdf/course-5.enc", "name": "ALGO3 - Chapter 5 - Queues.pdf", "pages": 15, "size": 0.7, "check": "j/szRLU6aQa+M/pVTFQGbjLpipMdeiZWkB+sv9n1"}, {"id": "td-5", "ch": 5, "kind": "td", "label": "Exercises", "file": "pdf/td-5.enc", "name": "TD5 - Queues.pdf", "pages": 1, "size": 0.2, "check": "i6IBUBdQF3imeXTL5XC74SvN0A6lw2Jh9fEFr10C"}, {"id": "sol-5", "ch": 5, "kind": "sol", "label": "Solution", "file": "pdf/sol-5.enc", "name": "TD5 - solution.pdf", "pages": 4, "size": 0.3, "check": "Q3yoiA+Kms5zn2HisxHLJb2szYNsRfDl4OL0KtKE"}, {"id": "course-6", "ch": 6, "kind": "course", "label": "Course", "file": "pdf/course-6.enc", "name": "ALGO3 - Chapter 6 - Recursion.pdf", "pages": 24, "size": 0.8, "check": "c+7j07mHP0MKufCYDRzyFZWFLxATWO69RGvM89dW"}, {"id": "td-6", "ch": 6, "kind": "td", "label": "Exercises", "file": "pdf/td-6.enc", "name": "TD6 - Recursion.pdf", "pages": 1, "size": 0.2, "check": "Dmgz5HgPGz8Ipu+l3ulUvjHf6vKKsWozg0tOi9oU"}, {"id": "sol-6", "ch": 6, "kind": "sol", "label": "Solution", "file": "pdf/sol-6.enc", "name": "TD6 - solution.pdf", "pages": 5, "size": 0.4, "check": "wB4f5WI7GluFQK9Kh74PiQHuzFOllmTaiMJTbWjM"}, {"id": "course-7", "ch": 7, "kind": "course", "label": "Course", "file": "pdf/course-7.enc", "name": "ALGO3 - Chapter 7 - Trees.pdf", "pages": 28, "size": 0.9, "check": "ynksr7ok0ygs+GZ8Xo04qmHA5rCPgp/vp+/5aAns"}, {"id": "td-7", "ch": 7, "kind": "td", "label": "Exercises", "file": "pdf/td-7.enc", "name": "TD7 - Trees.pdf", "pages": 1, "size": 0.2, "check": "cPcbtLrX3zVa4v1t0WrqzRNiIzF50sY0+GFiky6i"}, {"id": "sol-7", "ch": 7, "kind": "sol", "label": "Solution", "file": "pdf/sol-7.enc", "name": "TD7 - solution.pdf", "pages": 4, "size": 0.3, "check": "tusrYM3vhUm6EMWEfhZT7lR9qFWG5I1812giM9JX"}];
+const CHAPTERS = [{"n": 1, "title": "Algorithmics Basics Reminder", "desc": "Variables, types, loops, functions and procedures, parameter passing."}, {"n": 2, "title": "Data Representation in Memory", "desc": "Static and dynamic allocation, pointers, records, dynamic arrays."}, {"n": 3, "title": "Introduction to Algorithm Analysis", "desc": "Complexity, best, average and worst case, asymptotic notation."}, {"n": 4, "title": "Stacks", "desc": "LIFO structure, contiguous and chained representations, applications."}, {"n": 5, "title": "Queues", "desc": "FIFO structure, circular array, chained queue, applications."}, {"n": 6, "title": "Recursion", "desc": "Recursive algorithms, how they run, call trees, eliminating recursion."}, {"n": 7, "title": "Trees", "desc": "Binary trees, representations, traversals, binary search trees."}];
+const LOCK = '<svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>';
+const OPEN = '<svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 7.5-2"/></svg>';
+const keys = {};            // id -> CryptoKey (only for valid keys)
+const dec = s => Uint8Array.from(atob(s.replace(/-/g, '+').replace(/_/g, '/') + '==='.slice((s.length + 3) % 4)), c => c.charCodeAt(0));
+async function tryKey(item, keyText) {
+  try {
+    const k = await crypto.subtle.importKey('raw', dec(keyText), 'AES-GCM', false, ['decrypt']);
+    const c = dec(item.check);
+    const p = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: c.slice(0, 12) }, k, c.slice(12));
+    return new TextDecoder().decode(p) === 'ok' ? k : null;
+  } catch (e) { return null; }
+}
+function toast(m) { const t = document.getElementById('toast'); t.textContent = m; t.style.display = 'block'; clearTimeout(toast.h); toast.h = setTimeout(() => t.style.display = 'none', 3500); }
+async function getPdf(item) {
+  const r = await fetch(item.file); if (!r.ok) throw new Error('missing');
+  const d = new Uint8Array(await r.arrayBuffer());
+  const p = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: d.slice(0, 12) }, keys[item.id], d.slice(12));
+  return new Blob([p], { type: 'application/pdf' });
+}
+async function act(id, mode, btn) {
+  const item = ITEMS.find(i => i.id === id); let w = null;
+  if (mode === 'open') { w = window.open('', '_blank'); if (w) w.document.write('<p style="font-family:sans-serif;padding:24px">Opening…</p>'); }
+  btn.disabled = true;
+  try {
+    const blob = await getPdf(item), url = URL.createObjectURL(blob);
+    if (mode === 'open' && w) { w.location.href = url; }
+    else { const a = document.createElement('a'); a.href = url; a.download = item.name; document.body.appendChild(a); a.click(); a.remove(); }
+    setTimeout(() => URL.revokeObjectURL(url), 60000);
+  } catch (e) { if (w) w.close(); toast('Could not open this document. Please try again later.'); }
+  btn.disabled = false;
+}
+function render() {
+  const el = document.getElementById('list');
+  el.innerHTML = CHAPTERS.map(c => {
+    const slots = ITEMS.filter(i => i.ch === c.n).map(i => {
+      const meta = (i.kind === 'course' ? i.pages + ' slides' : i.pages + (i.pages > 1 ? ' pages' : ' page')) + ' · ' + i.size + ' MB';
+      const lab = i.kind === 'course' ? 'Course' : i.kind === 'td' ? 'TD' + c.n + ' · Exercises' : 'TD' + c.n + ' · Solution';
+      if (keys[i.id]) return `<div class="slot open"><div class="t"><span class="lab">${lab}</span><span class="state">${OPEN}Unlocked</span></div><div class="meta">${meta}</div><div class="acts"><button class="b" onclick="act('${i.id}','open',this)">Open</button><button class="b sec" onclick="act('${i.id}','dl',this)" title="Download">Download</button></div></div>`;
+      return `<div class="slot locked"><div class="t"><span class="lab">${lab}</span><span class="state">${LOCK}Locked</span></div><div class="meta">${meta}</div><div class="ghost">Not available yet</div></div>`;
+    }).join('');
+    return `<article class="ch"><div class="chh"><div class="num">${String(c.n).padStart(2, '0')}</div><div><h3>${c.title}</h3><p>${c.desc}</p></div></div><div class="slots">${slots}</div></article>`;
+  }).join('');
+}
+async function init() {
+  render();
+  if (!(window.crypto && crypto.subtle)) { toast('Please open this page over https.'); return; }
+  try {
+    const r = await fetch('unlock.txt?t=' + Date.now(), { cache: 'no-store' });
+    if (r.ok) {
+      const lines = (await r.text()).split(/\r?\n/);
+      for (const ln of lines) {
+        const s = ln.trim(); if (!s || s[0] === '#') continue;
+        const m = s.match(/^([a-z]+-\d+)\s*=\s*(\S+)\s*$/i); if (!m) continue;
+        const item = ITEMS.find(i => i.id === m[1].toLowerCase()); if (!item) continue;
+        const k = await tryKey(item, m[2]); if (k) keys[item.id] = k;
+      }
+    }
+  } catch (e) {}
+  render();
+}
+init();
+</script>
+</body></html>
