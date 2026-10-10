@@ -5,8 +5,8 @@
 # Then click 'Commit changes'. The site is updated within 1 or 2 minutes.
 
 # Chapter 1 · Algorithmics Basics Reminder
-course-1 =
-td-1 =
+course-1 = lNJJKy4FvLCfZhMMKA3ucaAMk09SdUNKk5Rzn7gukBA
+td-1 = QlWn5EcQNV19i5-P__ZtYzjee69w_atuXJNTeAmJ-Yg
 sol-1 =
 
 # Chapter 2 · Data Representation in Memory
