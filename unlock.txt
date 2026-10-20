@@ -10,8 +10,8 @@ td-1 = QlWn5EcQNV19i5-P__ZtYzjee69w_atuXJNTeAmJ-Yg
 sol-1 =
 
 # Chapter 2 · Data Representation in Memory
-course-2 =
-td-2 =
+course-2 = rFWwW6Jm68Kz-_jj6APTNwwtlHEypU21N7fgrruV0_o
+td-2 = RFryFsXtLoumyFA93c3JmvDgdOrJ-endS_tXWrtHwCc
 sol-2 =
 
 # Chapter 3 · Introduction to Algorithm Analysis
