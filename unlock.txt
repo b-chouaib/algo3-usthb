@@ -7,7 +7,7 @@
 # Chapter 1 · Algorithmics Basics Reminder
 course-1 = lNJJKy4FvLCfZhMMKA3ucaAMk09SdUNKk5Rzn7gukBA
 td-1 = QlWn5EcQNV19i5-P__ZtYzjee69w_atuXJNTeAmJ-Yg
-sol-1 =
+sol-1 = _lbTrgqGkX8E1RnhE5ma8kBEoy0izDQ0l_HwyKd14lI
 
 # Chapter 2 · Data Representation in Memory
 course-2 = rFWwW6Jm68Kz-_jj6APTNwwtlHEypU21N7fgrruV0_o
