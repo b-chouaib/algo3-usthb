@@ -12,11 +12,11 @@ sol-1 = _lbTrgqGkX8E1RnhE5ma8kBEoy0izDQ0l_HwyKd14lI
 # Chapter 2 · Data Representation in Memory
 course-2 = rFWwW6Jm68Kz-_jj6APTNwwtlHEypU21N7fgrruV0_o
 td-2 = RFryFsXtLoumyFA93c3JmvDgdOrJ-endS_tXWrtHwCc
-sol-2 =
+sol-2 = UD0FNS4LyMb2kKP0b_V4rYraZTWL51pStQACl-NGeXw
 
 # Chapter 3 · Introduction to Algorithm Analysis
-course-3 =
-td-3 =
+course-3 = VW_aH5FI4aDr_0Ay9nintBRhsYD-UDJFQRqBuQqk-iA
+td-3 = TTGd6Zc2m80mrkRwuD2egsf48RUfmRtfkwZGMV4VcYo
 sol-3 =
 
 # Chapter 4 · Stacks
